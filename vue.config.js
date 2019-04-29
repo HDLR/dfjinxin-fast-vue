@@ -9,7 +9,10 @@ module.exports = {
 
     // webpack-dev-server 相关配置
     devServer: {
-        port: 8001,
+        port: process.env.VUE_APP_SYS_PORT,
+        // historyApiFallback: {
+        //     index: process.env.VUE_APP_BASE_CONTENT + '/index.html'
+        // },
         open: false,//项目启动时是否自动打开浏览器，我这里设置为false,不打开，true表示打开
         // proxy: {
         //     '/proxyApi': {//代理api
