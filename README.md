@@ -25,8 +25,7 @@ yarn run test
 yarn run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 系统配置
 
 .env环境全局系统变量
 .env.develoment开发环境系统变量
