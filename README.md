@@ -1,16 +1,16 @@
 # dfjinxin-fast-vue
 
-## Project setup
+## 代码下载后在工程当前路径运行，下载所有依赖包
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 运行工程
 ```
 yarn run serve
 ```
 
-### Compiles and minifies for production
+### 工程打包
 ```
 yarn run build
 ```
