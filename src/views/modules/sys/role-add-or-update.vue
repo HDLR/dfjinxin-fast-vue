@@ -60,7 +60,7 @@
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
-          this.menuList = treeDataTranslate(data, 'menuId')
+          this.menuList = treeDataTranslate(data.data, 'menuId')
         }).then(() => {
           this.visible = true
           this.$nextTick(() => {
