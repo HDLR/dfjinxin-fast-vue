@@ -8,21 +8,27 @@
     <el-table
       :data="dataList"
       border
-      style="width: 100%;" :row-key="getRowKeys">
+      style="width: 100%;" row-key="menuId">
+      <!--<el-table-column-->
+        <!--prop="menuId"-->
+        <!--header-align="center"-->
+        <!--width="100"-->
+        <!--label="ID">-->
+      <!--</el-table-column>-->
+      <!--<table-tree-column-->
+        <!--prop="name"-->
+        <!--header-align="center"-->
+        <!--treeKey="menuId"-->
+        <!--width="150"-->
+        <!--label="名称">-->
+      <!--</table-tree-column>-->
       <el-table-column
-        prop="menuId"
-        header-align="center"
-        align="center"
-        width="100"
-        label="ID">
-      </el-table-column>
-      <table-tree-column
         prop="name"
         header-align="center"
-        treeKey="menuId"
+        align="center"
         width="150"
         label="名称">
-      </table-tree-column>
+      </el-table-column>
       <el-table-column
         prop="parentName"
         header-align="center"
@@ -154,11 +160,13 @@
             }
           })
         }).catch(() => {})
-      },
-      getRowKeys (row) {
-          // return row.menuId
-          return row.menuId
       }
     }
   }
 </script>
+
+<style lang="scss">
+  .el-table__expand-icon {
+    float: left; margin: 0 15px;
+  }
+</style>
