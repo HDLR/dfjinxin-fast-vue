@@ -27,11 +27,25 @@ http.interceptors.request.use(config => {
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-  if (response.data && response.data.code === 401) { // 401, token失效
-    clearLoginInfo()
-    router.push({ name: 'login' })
-  }
-  return response
+
+    if(response.data){
+        var resCode = response.data.code
+        if (0 === resCode) {  //code为0表示正常返回，无异常
+            return response
+
+        } else if (resCode === 401) { // 401, token失效, 重新登录
+            clearLoginInfo()
+            router.push({ name: 'login' })
+
+        } else { //其余为500, 404...等异常
+            var resMsg = response.data.msg
+            if(resMsg){
+              Vue.prototype.$message.error(resMsg)
+            }
+        }
+    }
+
+    return response
 }, error => {
   return Promise.reject(error)
 })
