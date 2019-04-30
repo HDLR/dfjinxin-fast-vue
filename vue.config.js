@@ -1,3 +1,8 @@
+const path = require("path");
+function resolve(dir) {
+    return path.join(__dirname, dir);
+}
+
 module.exports = {
     // publicPath: process.env.NODE_ENV === 'production'
     //     ? this.baseSys
@@ -29,4 +34,20 @@ module.exports = {
     // 输出文件目录
     outputDir: '../dfjinxin-fast/src/main/resources/static/',
     assetsDir: 'assets', // 静态资源目录 (js, css, img, fonts)
+
+    // alias 配置
+    chainWebpack: config => {
+        config.resolve.alias.set("@", resolve("src"));
+        config.module.rules.delete("svg");
+        config.module
+            .rule("svg-smart")
+            .test(/\.svg$/)
+            .include.add(resolve("src/icons/svg"))
+            .end()
+            .use("svg-sprite-loader")
+            .loader("svg-sprite-loader")
+            .options({
+                symbolId: "[name]"
+            });
+    }
 };
